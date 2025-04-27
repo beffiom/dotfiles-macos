@@ -3,12 +3,20 @@ MacOS Dotfiles with Nix Darwin Config
 
 ## Setup
 ### I. Install Nix
-sh <(curl -L https://nixos.org/nix/install)
+```
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
 
 ### II. Install Nix-Darwin
-1. sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/master.tar.gz darwin
-2. sudo nix-channel --update
-3. nix-env -iA darwin
+```
+sudo mkdir -p /etc/nix-darwin
+sudo chown $(id -nu):$(id -ng) /etc/nix-darwin
+cd /etc/nix-darwin
+
+nix --extra-experimental-features "nix-command flakes" flake init -t ~/.config/nix-darwin/master
+
+sed -i '' "s/simple/$(scutil --get LocalHostName)/" flake.nix
+```
 
 ### III. Update flake
 1. cd to ~/.config/nix-darwin
