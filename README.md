@@ -5,12 +5,16 @@ MacOS Dotfiles with Nix Darwin Config
 ### I. Install Nix
 sh <(curl -L https://nixos.org/nix/install)
 
-### II. Install nix-darwin
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-./result/bin/darwin-installer
+### II. Install Nix-Darwin
+sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/master.tar.gz darwin
+sudo nix-channel --update
+nix-env -iA darwin
 
 ### III. Update flake
-nix run nix-darwin -- switch --flake ~/.config/nix-darwin#air
+1. cd to ~/.config/nix-darwin
+2. nix flake init -t nix-darwin
+3. ensure ~/.config/nix-darwin has the file from this repo
+4. nix run nix-darwin -- switch --flake ~/.config/nix-darwin#air
 
 ## zsh alias to update flake
 zsh aliases found in ~/.zshrc
