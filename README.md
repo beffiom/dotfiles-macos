@@ -6,9 +6,9 @@ MacOS Dotfiles with Nix Darwin Config
 sh <(curl -L https://nixos.org/nix/install)
 
 ### II. Install Nix-Darwin
-sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/master.tar.gz darwin
-sudo nix-channel --update
-nix-env -iA darwin
+1. sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/master.tar.gz darwin
+2. sudo nix-channel --update
+3. nix-env -iA darwin
 
 ### III. Update flake
 1. cd to ~/.config/nix-darwin
