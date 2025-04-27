@@ -13,7 +13,7 @@ sudo mkdir -p /etc/nix-darwin
 sudo chown $(id -nu):$(id -ng) /etc/nix-darwin
 cd /etc/nix-darwin
 
-nix --extra-experimental-features "nix-command flakes" flake init -t ~/.config/nix-darwin/master
+nix --extra-experimental-features "nix-command flakes" flake init
 
 sed -i '' "s/simple/$(scutil --get LocalHostName)/" flake.nix
 ```
